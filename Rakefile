@@ -9,22 +9,31 @@ DIRS = {
 }
 
 
-BASE_SRC_URL = ('http://download.cms.gov/Research-Statistics-Data-and-Systems/' \
+SRC_AGG_URL = 'http://download.cms.gov/Research-Statistics-Data-and-Systems/'\
+              + 'Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Downloads/' \
+              + 'Medicare_Physician_and_Other_Supplier_NPI_Aggregate_'\
+              + 'CY%s.zip'
+
+SRC_PUF_URL = ('http://download.cms.gov/Research-Statistics-Data-and-Systems/' \
                 + 'Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Downloads/' \
                 + 'Medicare_Provider_Util_Payment_PUF_CY%s.zip?agree=yes&next=Accept')
 
-URLS = {
-  '2012' => BASE_SRC_URL % '2012_update',
-  '2013' => BASE_SRC_URL % '2013',
-  '2014' => BASE_SRC_URL % '2014',
-}
 
+URL_STEMS = {
+  '2012' => '2012_update',
+  '2013' => '2013',
+  '2014' => '2014',
+}
 
 Z_FILES = {
-  '2012' => DIRS['fetched'] / '2012.zip',
-  '2013' => DIRS['fetched'] / '2013.zip',
-  '2014' => DIRS['fetched'] / '2014.zip'
+  '2012-puf' => DIRS['fetched'] / '2012-puf.zip',
+  '2013-puf' => DIRS['fetched'] / '2013-puf.zip',
+  '2014-puf' => DIRS['fetched'] / '2014-puf.zip',
+  '2012-agg' => DIRS['fetched'] / '2012-agg.zip',
+  '2013-agg' => DIRS['fetched'] / '2013-agg.zip',
+  '2014-agg' => DIRS['fetched'] / '2014-agg.zip',
 }
+
 
 
 desc 'Setup the directories'
@@ -64,10 +73,14 @@ end
 
 namespace :files do
   namespace :fetched do
-    Z_FILES.each_pair do |year, zname|
-      desc "Download #{year} zip file"
+    Z_FILES.each_pair do |slug, zname|
+      year, ztype = slug.split('-')
+      desc "Download #{year} #{ztype} zip file"
       file zname do
-        url = URLS[year]
+        url = (ztype == 'puf') \
+              ?  SRC_PUF_URL % URL_STEMS[year] \
+              :  SRC_AGG_URL % URL_STEMS[year]
+
         sh %Q{curl -o #{zname} '#{url}'}
       end
     end
