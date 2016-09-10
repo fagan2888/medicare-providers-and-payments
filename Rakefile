@@ -52,6 +52,11 @@ task :fetch_zips => [:setup] do
   Z_FILES.each_value{ |zname| Rake::Task[zname].execute }
 end
 
+task :unpack_zips => Z_FILES.values.map(&:to_s) do
+  sh %Q{unzip -o -d #{DIRS['fetched']} \
+        '#{DIRS['fetched'] / '*.zip'}'}
+end
+
 
 desc "Fetch everything"
 task :fetch  => [:setup] do
