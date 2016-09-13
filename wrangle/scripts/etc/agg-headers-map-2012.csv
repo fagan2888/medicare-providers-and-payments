@@ -1,0 +1,69 @@
+  1: NPI
+  2: NPPES Provider Last Name / Organization Name
+  3: NPPES Provider First Name
+  4: NPPES Provider Middle Initial
+  5: NPPES Credentials
+  6: NPPES Provider Gender
+  7: NPPES Entity Code
+  8: NPPES Provider Street Address 1
+  9: NPPES Provider Street Address 2
+ 10: NPPES Provider City
+ 11: NPPES Provider Zip Code
+ 12: NPPES Provider State
+ 13: NPPES Provider Country
+ 14: Provider Type
+ 15: Medicare Participation Indicator
+ 16: Number of HCPCS
+ 17: Number of Services
+ 18: Number of Unique Beneficiaries
+ 19: Total Submitted Charges
+ 20: Total Medicare Allowed Amount
+ 21: Total Medicare Payment Amount
+ 22: Drug Suppress Indicator
+ 23: Number of HCPCS Associated With Drug Services
+ 24: Number of Drug Services
+ 25: Number of Unique Beneficiaries With Drug Services
+ 26: Total Drug Submitted Charges
+ 27: Total Drug Medicare Allowed Amount
+ 28: Total Drug Medicare Payment Amount
+ 29: Medical Suppress Indicator
+ 30: Number of HCPCS Associated With Medical Services
+ 31: Number of Medical Services
+ 32: Number of Unique Beneficiaries With Medical Services
+ 33: Total Medical Submitted Charges
+ 34: Total Medical Medicare Allowed Amount
+ 35: Total Medical Medicare Payment Amount
+ 36: Average Age of Beneficiaries
+ 37: Number of Beneficiaries Age Less 65
+ 38: Number of Beneficiaries Age 65 to 74
+ 39: Number of Beneficiaries Age 75 to 84
+ 40: Number of Beneficiaries Age Greater 84
+ 41: Number of Female Beneficiaries
+ 42: Number of Male Beneficiaries
+ 43: Number of Non-Hispanic White Beneficiaries
+ 44: Number of Black or African American Beneficiaries
+ 45: Number of Asian Pacific Islander Beneficiaries
+ 46: Number of Hispanic Beneficiaries
+ 47: Number of American Indian/Alaska Native Beneficiaries
+ 48: Number of Beneficiaries With Race Not Elsewhere Classified
+ 49: Number of Beneficiaries With Medicare Only Entitlement
+ 50: Number of Beneficiaries With Medicare & Medicaid Entitlement
+ 51: Percent (%) of Beneficiaries Identified With Alzheimer’s Disease or Dementia
+ 52: Percent (%) of Beneficiaries Identified With Asthma
+ 53: Percent (%) of Beneficiaries Identified With Atrial Fibrillation
+ 54: Percent (%) of Beneficiaries Identified With Cancer
+ 55: Percent (%) of Beneficiaries Identified With Chronic Kidney Disease
+ 56: Percent (%) of Beneficiaries Identified With Chronic Obstructive Pulmonary Disease
+ 57: Percent (%) of Beneficiaries Identified With Depression
+ 58: Percent (%) of Beneficiaries Identified With Diabetes
+ 59: Percent (%) of Beneficiaries Identified With Heart Failure
+ 60: Percent (%) of Beneficiaries Identified With Hyperlipidemia
+ 61: Percent (%) of Beneficiaries Identified With Hypertension
+ 62: Percent (%) of Beneficiaries Identified With Ischemic Heart Disease
+ 63: Percent (%) of Beneficiaries Identified With Osteoporosis
+ 64: Percent (%) of Beneficiaries Identified With Rheumatoid Arthritis / Osteoarthritis
+ 65: Percent (%) of Beneficiaries Identified With Schizophrenia / Other Psychotic Disorders
+ 66: Percent (%) of Beneficiaries Identified With Stroke
+ 67: Average HCC Risk Score of Beneficiaries
+ 68:
+ 69:

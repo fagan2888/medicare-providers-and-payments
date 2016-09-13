@@ -1,4 +1,4 @@
-Medicare Physician and Other Supplier National Provider Identifier (NPI) Aggregate Report, Calendar Year 2012|
+Medicare Physician and Other Supplier National Provider Identifier (NPI) Aggregate Report, Calendar Year 2013|
 Documentation|
 Variable Name|Description
 NPI|National Provider Identifier (NPI) for the performing provider on the claim.
@@ -95,7 +95,7 @@ who are Hispanic or Asian/Pacific Islanders.|
 |
 4CMS developed a risk-adjustment model that uses HCCs (hierarchical condition categories) to assign risk scores. Those scores estimate |
 how beneficiaries’ FFS spending will compare to the overall average for the entire Medicare population. The average risk score |
-is 1.09; beneficiaries with s+A10cores greater than that are expected to have above-average spending, and vice versa. |
+is set at 1.08; beneficiaries with scores greater than that are expected to have above-average spending, and vice versa. |
 Risk scores are based on a beneficiary’s age and sex; whether the beneficiary is eligible for Medicaid, first qualified for Medicare|
  on the basis of disability, or lives in an institution (usually a nursing home); and the beneficiary’s diagnoses from the previous year.|
  The HCC model was designed for risk adjustment on larger populations, such as the enrollees in an MA plan, and generates more |

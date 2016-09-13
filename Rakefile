@@ -5,6 +5,7 @@ CORRAL_DIR = WRANGLE_DIR / 'corral'
 SCRIPTS = WRANGLE_DIR / 'scripts'
 DIRS = {
     'fetched' => CORRAL_DIR / 'fetched',
+    'compiled' => CORRAL_DIR / 'compiled',
     'published' => DATA_DIR,
 }
 
@@ -32,8 +33,14 @@ Z_FILES = {
   '2012-agg' => DIRS['fetched'] / '2012-agg.zip',
   '2013-agg' => DIRS['fetched'] / '2013-agg.zip',
   '2014-agg' => DIRS['fetched'] / '2014-agg.zip',
+  # 2014 file becomes:
+  # Medicare_Physician_and_Other_Supplier_NPI_Aggregate_CY2014.txt
 }
 
+XLS_FILES = {
+  DIRS['fetched'] / '2012-agg.csv' =>  DIRS['fetched'] / 'Medicare-Physician-and-Other-Supplier-NPI-Aggregate-CY2012.xlsx',
+  DIRS['fetched'] / '2013-agg.csv' =>  DIRS['fetched'] / 'Medicare-Physician-and-Other-Supplier-NPI-Aggregate-CY2013.xlsx',
+}
 
 
 desc 'Setup the directories'
@@ -58,6 +65,7 @@ task :unpack_zips => Z_FILES.values.map(&:to_s) do
 end
 
 
+
 desc "Fetch everything"
 task :fetch  => [:setup] do
   F_FILES.each_value{|fn| Rake::Task[fn].execute() }
@@ -77,6 +85,21 @@ end
 
 
 namespace :files do
+  namespace :compiled do
+    ['2012', '2013', '2014'].each do |year|
+      fetchedname = DIRS['fetched'] / "Medicare_Provider_Util_Payment_PUF_CY#{year}.txt"
+      compiledname = DIRS['compiled'] / "payments-#{year}.csv"
+      desc "Cleaning payments from #{fetchedname}"
+      file compiledname => fetchedname do
+        sh %Q{
+          python #{SCRIPTS / 'clean_payments.py'} \
+          #{fetchedname} > #{compiledname}
+        }
+      end
+    end
+  end
+
+
   namespace :fetched do
     Z_FILES.each_pair do |slug, zname|
       year, ztype = slug.split('-')
@@ -87,6 +110,15 @@ namespace :files do
               :  SRC_AGG_URL % URL_STEMS[year]
 
         sh %Q{curl -o #{zname} '#{url}'}
+      end
+    end
+  end
+
+  namespace :xls_to_csv do
+    XLS_FILES.each_pair do |csvname, xlsname|
+      desc "Convert #{xlsname} to CSV"
+      file csvname => xlsname do
+        sh %Q{in2csv --sheet 'DATA'   #{xlsname} > #{csvname}}
       end
     end
   end
